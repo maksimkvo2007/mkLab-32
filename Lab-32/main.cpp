@@ -42,12 +42,25 @@ int main() {
             tollLine.front().print();
             tollLine.pop_front();
         }
-        } else {
+        else {
             // 45% probability: A new car joins the back of the line
             Car newCar;
             cout << "Time: " << time << " Operation: Joined lane: ";
             newCar.print();
             tollLine.push_back(newCar);
         }
+        cout << "Queue:\n";
+        if (tollLine.empty()) {
+            cout << "    Empty\n";
+        } else {
+            // Loop through and print every car currently in the lane
+            for (Car c : tollLine) {
+                cout << "    ";
+                c.print();
+            }
+        }
 
+        // Advance to the next time cycle
+        time++;
+    }
 }
