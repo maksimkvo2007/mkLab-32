@@ -42,5 +42,12 @@ int main() {
             tollLine.front().print();
             tollLine.pop_front();
         }
+        } else {
+            // 45% probability: A new car joins the back of the line
+            Car newCar;
+            cout << "Time: " << time << " Operation: Joined lane: ";
+            newCar.print();
+            tollLine.push_back(newCar);
+        }
 
 }
