@@ -25,7 +25,22 @@ int main() {
     for (Car c : tollLine) {
         cout << "    "; 
         c.print(); // The print method in Car.h handles the formatting and the newline
-    }
+    }   
 
-    
+    // Start tracking the time cycles
+    int time = 1;
+
+    // Run the simulation until the queue is empty
+    while (!tollLine.empty()) {
+        
+        // Generate a random number from 1 to 100 to determine the operation
+        int probability = rand() % 100 + 1;
+
+        if (probability <= 55) {
+            // 55% probability: Car at the front pays its toll and leaves
+            cout << "Time: " << time << " Operation: Car paid: ";
+            tollLine.front().print();
+            tollLine.pop_front();
+        }
+
 }
