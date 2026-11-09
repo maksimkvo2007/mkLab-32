@@ -72,6 +72,23 @@ int main() {
                     newCar.print();
                     lanes[i].push_back(newCar);
                 }
+                else {
+                    // 15%: The car at the back switches to a different random lane
+                    Car switchingCar = lanes[i].back();
+                    lanes[i].pop_back(); // Remove from current lane
+
+                    // Pick a random target lane that is NOT the current lane
+                    int targetLane = i;
+                    while (targetLane == i) {
+                        targetLane = rand() % NUM_LANES;
+                    }
+
+                    // Add the car to the back of the new lane
+                    lanes[targetLane].push_back(switchingCar);
+                    
+                    cout << "Lane " << i + 1 << ": Switched: ";
+                    switchingCar.print();
+                }
             }
         
         }
