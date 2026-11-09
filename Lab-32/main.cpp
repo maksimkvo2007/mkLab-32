@@ -90,39 +90,18 @@ int main() {
                     switchingCar.print();
                 }
             }
-        
         }
 
-        /*
-        // Generate a random number from 1 to 100 to determine the operation
-        int probability = rand() % 100 + 1;
-
-        if (probability <= 55) {
-            // 55% probability: Car at the front pays its toll and leaves
-            cout << "Time: " << time << " Operation: Car paid: ";
-            tollLine.front().print();
-            tollLine.pop_front();
-        }
-        else {
-            // 45% probability: A new car joins the back of the line
-            Car newCar;
-            cout << "Time: " << time << " Operation: Joined lane: ";
-            newCar.print();
-            tollLine.push_back(newCar);
-        }
-        cout << "Queue:\n";
-        if (tollLine.empty()) {
-            cout << "    Empty\n";
-        } else {
-            // Loop through and print every car currently in the lane
-            for (Car c : tollLine) {
-                cout << "    ";
-                c.print();
+        for (int i = 0; i < NUM_LANES; i++) {
+            cout << "Lane " << i + 1 << " Queue:\n";
+            if (lanes[i].empty()) {
+                cout << "    Empty\n";
+            } else {
+                for (Car c : lanes[i]) {
+                    cout << "    ";
+                    c.print();
+                }
             }
         }
-
-        // Advance to the next time cycle
-        time++;
-        */
     }
 }
