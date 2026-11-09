@@ -10,10 +10,18 @@ int main() {
     // Seed the random number generator so we get different results each run
     srand(time(0));
 
-    // Create the deque for the toll booth line and define the initial amount
-    deque<Car> tollLine;
+    // Constants based on the lab requirements
+    const int NUM_LANES = 4;
     const int INITIAL_CARS = 2;
+    const int TIME_PERIODS = 20;
 
+    const int PROB_PAY = 46;
+    const int PROB_JOIN = 39;
+    const int PROB_SWITCH = 15;
+
+    // Create an array of 4 toll booth lanes
+    deque<Car> lanes[NUM_LANES];
+    
     // Populate the initial queue with 2 cars
     for (int i = 0; i < INITIAL_CARS; i++) {
         Car newCar;
