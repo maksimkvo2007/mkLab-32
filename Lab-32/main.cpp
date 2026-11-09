@@ -40,12 +40,26 @@ int main() {
         }
     }
 
-    // Start tracking the time cycles
-    int time = 1;
-
-    // Run the simulation until the queue is empty
-    while (!tollLine.empty()) {
+    // Run the simulation for 20 time periods
+    for (int time = 1; time <= TIME_PERIODS; time++) { //just rewriting code from scratch while taking pieces from before
+        cout << "\nTime: " << time << "\n";
         
+        for (int i = 0; i < NUM_LANES; i++) {
+            
+            // If the lane is empty, it's a 50/50 chance a car joins
+            if (lanes[i].empty()) {
+                int prob = rand() % 100 + 1;
+                if (prob <= 50) {
+                    Car newCar;
+                    lanes[i].push_back(newCar);
+                    cout << "Lane " << i + 1 << ": Joined: ";
+                    newCar.print();
+                }
+            }
+        
+        }
+
+        /*
         // Generate a random number from 1 to 100 to determine the operation
         int probability = rand() % 100 + 1;
 
@@ -75,5 +89,6 @@ int main() {
 
         // Advance to the next time cycle
         time++;
+        */
     }
 }
