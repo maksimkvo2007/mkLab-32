@@ -56,6 +56,23 @@ int main() {
                     newCar.print();
                 }
             }
+            else {
+                int prob = rand() % 100 + 1;
+
+                if (prob <= PROB_PAY) {
+                    // 46%: Car at the front pays and leaves
+                    cout << "Lane " << i + 1 << ": Paid: ";
+                    lanes[i].front().print();
+                    lanes[i].pop_front(); 
+                } 
+                else if (prob <= PROB_PAY + PROB_JOIN) {
+                    // 39%: A new car joins the back of the queue
+                    Car newCar;
+                    cout << "Lane " << i + 1 << ": Joined: ";
+                    newCar.print();
+                    lanes[i].push_back(newCar);
+                }
+            }
         
         }
 
