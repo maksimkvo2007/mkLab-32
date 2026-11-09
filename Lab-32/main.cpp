@@ -21,19 +21,24 @@ int main() {
 
     // Create an array of 4 toll booth lanes
     deque<Car> lanes[NUM_LANES];
-    
-    // Populate the initial queue with 2 cars
-    for (int i = 0; i < INITIAL_CARS; i++) {
-        Car newCar;
-        tollLine.push_back(newCar);
+
+    // Pre-populate all 4 lanes with 2 cars each
+    for (int i = 0; i < NUM_LANES; i++) {
+        for (int j = 0; j < INITIAL_CARS; j++) {
+            Car newCar;
+            lanes[i].push_back(newCar);
+        }
     }
 
-    // Display the initial queue
+    // Display the initial state of all lanes
     cout << "Initial queue:\n";
-    for (Car c : tollLine) {
-        cout << "    "; 
-        c.print(); // The print method in Car.h handles the formatting and the newline
-    }   
+    for (int i = 0; i < NUM_LANES; i++) {
+        cout << "Lane " << i + 1 << " Queue:\n";
+        for (Car c : lanes[i]) {
+            cout << "    "; 
+            c.print(); 
+        }
+    }
 
     // Start tracking the time cycles
     int time = 1;
